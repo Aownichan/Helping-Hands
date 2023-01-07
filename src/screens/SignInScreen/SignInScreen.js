@@ -5,17 +5,20 @@ import CustomInput from '../../Components/CustomInputs'
 import CustomButton from '../../Components/CustomButton'
 import { useNavigation } from '@react-navigation/native'
 import background from '../../../Assets/Images/4.jpg'
+
+
 const SignInScreen = () => {
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
+  const [enteredEmail, setEmail] = useState('')
+  const [enteredPassword, setPassword] = useState('')
+  const [error, setError] = useState(null);
+  const FIREBASE_API_ENDPOINT = 'https://mad-db-91771-default-rtdb.asia-southeast1.firebasedatabase.app/'
 
   const onSignInPressed = () => {
-    navigation.navigate('DonorHome')
+
+    navigation.navigate("DonorHome")
+    
   }
 
-  const onForgotPasswordPressed = () => {
-    navigation.navigate('ForgotPassword')
-  }
 
   const onSignUpPressed = () => {
     navigation.navigate('SignUp')
@@ -28,12 +31,11 @@ const SignInScreen = () => {
     <ScrollView showsVerticalScrollIndicator={false}> 
     <View style={styles.root} >
       <Image source={Logo} style={[styles.logo, {height: height * 0.3}]} resizeMode="contain"/>
-    <CustomInput placeholder="Username" value={username} setValue={setUsername}></CustomInput>
-    <CustomInput secureTextEntry={true} placeholder="Password" value={password} setValue={setPassword}></CustomInput>
-    
+    <CustomInput placeholder="Email" value={enteredEmail} setValue={setEmail}></CustomInput>
+    <CustomInput secureTextEntry={true} placeholder="Password" value={enteredPassword} setValue={setPassword}></CustomInput>
+    {error && <Text>{error}</Text>}
     <CustomButton type="PRIMARY" text="Sign In" onPress={onSignInPressed}></CustomButton>
 
-    <CustomButton type="LINK" text="Forgot Password" onPress={onForgotPasswordPressed}></CustomButton>
     <CustomButton type="LINK" text="Don't have an account? Create One" onPress={onSignUpPressed}></CustomButton>
 
     
