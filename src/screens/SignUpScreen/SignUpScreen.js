@@ -6,7 +6,8 @@ import CustomButton from '../../Components/CustomButton'
 import { useNavigation } from '@react-navigation/native'
 import background from '../../../Assets/Images/4.jpg'
 import CustomDropDown from '../../Components/CustomDropDown'
-import { auth } from '../../../firebase'
+// import firebase from "firebase/compat/app";
+// import "firebase/compat/firestore";
 
 const SignUpScreen = () => {
   const navigation = useNavigation()
@@ -20,7 +21,6 @@ const SignUpScreen = () => {
   const [emailerror, setEmailError] = useState(null);
   const [passworderror, setPasswordError] = useState(null);
   const [usernameerror, setUsernameError] = useState(null);
-  const FIREBASE_API_ENDPOINT = 'https://mad-db-91771-default-rtdb.asia-southeast1.firebasedatabase.app/'
 
 
 
@@ -49,13 +49,25 @@ const SignUpScreen = () => {
       setEmailError('Invalid Email');
     }
     else{
-      auth
-      .createUserWithEmailAndPassword(email, password)
-      .then(userCredentials => {
-        const user = userCredentials.user
-        console.log(user.email)
-      })
-      alert("Account Created!")
+      // console.log("Signup Enter");
+      //   const firestore = firebase.firestore();
+      //   // STORE USER DATA INTO CLOUD FIRESTORE
+      //   firestore
+      //       .collection("users")
+      //       .add({
+      //           name: username,
+      //           email: email,
+      //           password: password,
+      //           type: accountTypeValue,
+      //       })
+      //       .then((docRef) => {
+      //           console.log("User added with ID: ", docRef.id);
+
+      //       })
+      //       .catch((error) => {
+      //           console.error("Error adding user: ", error);
+      //       });
+
     }
     
     

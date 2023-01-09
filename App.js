@@ -6,6 +6,9 @@ import ConfirmEmailScreen from './src/screens/ConfirmEmailScreen';
 import ForgotPasswordScreen from './src/screens/ForgotPasswordScreen';
 import ResetPasswordScreen from './src/screens/ResetPasswordScreen';
 import Navigation from './src/Navigation';
+// import firebase from "firebase/compat/app";
+// import "firebase/compat/firestore";
+
 
 const App = () => {
   return (
