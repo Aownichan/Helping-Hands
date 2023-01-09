@@ -4,6 +4,8 @@ import Donate from '../../../Assets/Images/Donate.jpg'
 import CustomButton from '../../Components/CustomButton'
 import { useNavigation } from '@react-navigation/native'
 import background from '../../../Assets/Images/1.jpg'
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 const DonorHomeScreen = () => {
     const {height} = useWindowDimensions()
@@ -26,11 +28,14 @@ const DonorHomeScreen = () => {
 
       const navigation = useNavigation()
 
+      const nameval = AsyncStorage.getItem('@store_name')
+
+
   return (
     <ImageBackground source={background} style={[styles.backgroundimage, {height: height * 1}]}>
     <ScrollView showsVerticalScrollIndicator={false}> 
     <View style={styles.root} >
-        <Text style={styles.title}> Welcome Donor</Text>
+        <Text style={[styles.title, {textAlign: 'center'}]}> Welcome to the Donor Dashboard</Text>
         <Image source={Donate} style={[styles.logo, {height: height * 0.4}]} resizeMode="contain"/>
     <CustomButton type="PRIMARY" text="Donate" onPress={onDonatePressed}></CustomButton>
     <CustomButton type="SECONDARY" text="Donation History" onPress={onHistoryPressed}></CustomButton>

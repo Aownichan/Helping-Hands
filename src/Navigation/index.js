@@ -22,16 +22,16 @@ const Navigation = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
-        <Stack.Screen name="SignIn" component={SignInScreen}/>
+      <Stack.Screen name="SignIn" component={SignInScreen}/>
+      <Stack.Screen name="BeneficiaryHome" component={BeneficiaryHomeScreen}/>
+        <Stack.Screen name="DonorDonate" component={DonorDonateScreen}/>
         <Stack.Screen name="SignUp" component={SignUpScreen}/>
         <Stack.Screen name="ConfirmEmail" component={ConfirmEmailScreen}/>
         <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen}/>
         <Stack.Screen name="ResetPassword" component={ResetPasswordScreen}/>
         <Stack.Screen name="DonorHome" component={DonorHomeScreen}/>
-        <Stack.Screen name="DonorDonate" component={DonorDonateScreen}/>
         <Stack.Screen name="DonorHistory" component={DonerDonationHistory}/>
         <Stack.Screen name="Settings" component={SettingsScreen}/>
-        <Stack.Screen name="BeneficiaryHome" component={BeneficiaryHomeScreen}/>
         <Stack.Screen name="BeneficiaryDonate" component={BenefeciaryDonationScreen}/>
         <Stack.Screen name="BeneficiaryLoan" component={BeneficiaryLoanScreen}/>
         <Stack.Screen name="BeneficiaryHistory" component={BeneficiaryHistoryScreen}/>

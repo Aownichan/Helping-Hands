@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Modal, StyleSheet } from 'react-native';
 
-const CustomDropDown = ({ onValueChange }) => {
+const CustomDropDown2 = ({ onValueChange }) => {
     const [modalVisible, setModalVisible] = useState(false);
-    const [selectedValue, setSelectedValue] = useState('Donor');
+    const [selectedValue, setSelectedValue] = useState('Visa');
 
     const handleOptionPress = (value) => {
         setSelectedValue(value);
@@ -24,18 +24,18 @@ const CustomDropDown = ({ onValueChange }) => {
         >
           <View style={styles.modalContainer}>
             <View style={styles.innerContainer}>
-                <Text style={styles.innertext}>Account Type:</Text>
+                <Text style={styles.innertext}>Payment Method:</Text>
               <TouchableOpacity
                 style={styles.option}
-                onPress={() => handleOptionPress('Donor')}
+                onPress={() => handleOptionPress('Visa')}
               >
-                <Text style={styles.optionText}>Donor</Text>
+                <Text style={styles.optionText}>Visa</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.option}
-                onPress={() => handleOptionPress('Beneficiary')}
+                onPress={() => handleOptionPress('MasterCard')}
               >
-                <Text style={styles.optionText}>Beneficiary</Text>
+                <Text style={styles.optionText}>MasterCard</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -95,4 +95,4 @@ const CustomDropDown = ({ onValueChange }) => {
       color: "#051C60"
     },})
 
-export default CustomDropDown
+export default CustomDropDown2

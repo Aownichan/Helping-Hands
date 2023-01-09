@@ -6,7 +6,8 @@ import CustomButton from '../../Components/CustomButton'
 import { useNavigation } from '@react-navigation/native'
 import background from '../../../Assets/Images/4.jpg'
 import CustomDropDown from '../../Components/CustomDropDown'
-// import firebase from "firebase/compat/app";
+import AsyncStorage from '@react-native-async-storage/async-storage'
+// import firebase from 'firebase/compat/app'
 // import "firebase/compat/firestore";
 
 const SignUpScreen = () => {
@@ -21,6 +22,7 @@ const SignUpScreen = () => {
   const [emailerror, setEmailError] = useState(null);
   const [passworderror, setPasswordError] = useState(null);
   const [usernameerror, setUsernameError] = useState(null);
+  const FIREBASE_API_ENDPOINT='https://mad-db-91771-default-rtdb.asia-southeast1.firebasedatabase.app/'
 
 
 
@@ -28,7 +30,7 @@ const SignUpScreen = () => {
     navigation.navigate("SignIn")
   }
 
-  const onSignUpPressed = () => {
+  const onSignUpPressed = async () => {
 
     if(password == "" || passwordRepeat == ""){
       setPasswordError("Please fill password fields")
@@ -49,31 +51,42 @@ const SignUpScreen = () => {
       setEmailError('Invalid Email');
     }
     else{
-      // console.log("Signup Enter");
-      //   const firestore = firebase.firestore();
-      //   // STORE USER DATA INTO CLOUD FIRESTORE
-      //   firestore
-      //       .collection("users")
-      //       .add({
-      //           name: username,
-      //           email: email,
-      //           password: password,
-      //           type: accountTypeValue,
-      //       })
-      //       .then((docRef) => {
-      //           console.log("User added with ID: ", docRef.id);
 
-      //       })
-      //       .catch((error) => {
-      //           console.error("Error adding user: ", error);
-      //       });
-
-    }
+      fetch(`${FIREBASE_API_ENDPOINT}/data.json`, {
+        method: 'POST',
+        body: JSON.stringify({
     
+          username:username,
+          email: email,
+          password: password,
+          type: accountTypeValue
+    
+        })
+
+      });
+      
+          try {
+          await AsyncStorage.setItem('@store_email', email)
+          await AsyncStorage.setItem('@store_pass', password)
+          await AsyncStorage.setItem('@store_type', accountTypeValue)
+          await AsyncStorage.setItem('@store_name', username)
+
+      
+
+        } catch (e) {
+          alert("Registration failed")
+        }
+
+        alert("Signed Up!")
+        navigation.navigate("SignIn")
+        
     
 
+
+    
     
   }
+}
 
   const handleValueChange = (value) => {
     setSelectedValue(value);
